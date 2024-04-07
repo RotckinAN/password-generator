@@ -1,0 +1,25 @@
+.input-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #24232b;
+  padding: 1.5rem;
+
+  p {
+    margin: 0;
+    color: #eae9ef;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  .copy-icon {
+    fill: #eae9ef;
+    transition: opacity 0.3s ease-in;
+
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}
