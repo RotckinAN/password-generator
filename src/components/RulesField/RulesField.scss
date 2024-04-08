@@ -2,7 +2,23 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.8rem;
+  gap: 1.5rem;
   background-color: #24232b;
   padding: 1.5rem;
+
+  .checkbox-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .generate-button-icon {
+    width: 20px;
+    height: 20px;
+    fill: #9ef8a6;
+  }
+
+  .MuiButtonBase-root:hover .generate-button-icon {
+    fill: #111016;
+  }
 }

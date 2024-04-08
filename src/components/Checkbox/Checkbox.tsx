@@ -11,15 +11,17 @@ const Checkbox = ({ label }: CheckboxProps) => {
       sx={{
         "&.MuiFormControlLabel-root": {
           margin: 0,
-        },
-        "&.MuiFormControlLabel-root .MuiTypography-root": {
-          fontFamily: "IBM Plex Mono",
-          color: "#eae9ef",
-          fontWeight: 500,
-          paddingLeft: "0.8rem",
-        },
-        "&.MuiFormControlLabel-root .MuiButtonBase-root": {
-          padding: "2px",
+
+          ".MuiTypography-root": {
+            fontFamily: "IBM Plex Mono",
+            color: "#eae9ef",
+            fontWeight: 500,
+            paddingLeft: "0.8rem",
+          },
+
+          ".MuiButtonBase-root": {
+            padding: "2px",
+          },
         },
       }}
       control={

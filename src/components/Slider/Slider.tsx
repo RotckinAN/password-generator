@@ -32,7 +32,7 @@ const Slider = ({ value, setValue }: SliderProps) => {
             ".MuiSlider-thumb": {
               height: 24,
               width: 24,
-              backgroundColor: "#18171f",
+              backgroundColor: "#111016",
               border: "2px solid #9ef8a6",
 
               "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {

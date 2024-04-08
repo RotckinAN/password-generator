@@ -1,5 +1,6 @@
 import Input from "@/components/Input";
 import RulesField from "@/components/RulesField/RulesField";
+
 import "./App.scss";
 
 function App() {

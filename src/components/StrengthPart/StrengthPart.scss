@@ -1,0 +1,61 @@
+@mixin strength-color() {
+  border-color: #f7cd69;
+  background-color: #f7cd69;
+}
+
+.strength-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111016;
+  padding: 1.2rem 1.5rem;
+
+  p {
+    margin: 0;
+    color: #7f7d8a;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .strength-container {
+    display: flex;
+    gap: 0.8rem;
+
+    p {
+      color: #eae9ef;
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    .strength-icon-container {
+      display: flex;
+      gap: 0.4rem;
+
+      &.weak div:first-child {
+        @include strength-color();
+      }
+
+      &.medium div:first-child,
+      &.medium div:nth-child(2) {
+        @include strength-color();
+      }
+
+      &.strong div:first-child,
+      &.strong div:nth-child(2),
+      &.strong div:nth-child(3) {
+        @include strength-color();
+      }
+
+      &.veryStrong div {
+        @include strength-color();
+      }
+
+      div {
+        box-sizing: border-box;
+        border: 1px solid #eae9ef;
+        width: 0.65rem;
+        height: 100%;
+      }
+    }
+  }
+}
