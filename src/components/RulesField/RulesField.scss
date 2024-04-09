@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
   background-color: #24232b;
-  padding: 1.5rem;
+  padding: 1rem;
 
   .checkbox-container {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.5rem;
   }
 
   .generate-button-icon {
@@ -20,5 +20,14 @@
 
   .MuiButtonBase-root:hover .generate-button-icon {
     fill: #111016;
+  }
+
+  @media screen and (min-width: 540px) {
+    gap: 1.5rem;
+    padding: 1.5rem;
+
+    .checkbox-container {
+      gap: 0.8rem;
+    }
   }
 }

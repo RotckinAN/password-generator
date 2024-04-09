@@ -1,7 +1,7 @@
 .slider {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
 
   .title-container {
     display: flex;
@@ -12,16 +12,32 @@
       padding: 0;
       color: #eae9ef;
       font-weight: 500;
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
 
     .slider-value {
       margin: 0;
-      padding: 0.5rem 0;
+      padding: 0.25rem 0;
       color: #9ef8a6;
       font-weight: 600;
-      font-size: 2rem;
-      line-height: 2rem;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+    }
+  }
+
+  @media screen and (min-width: 540px) {
+    gap: 0.8rem;
+
+    .title-container {
+      .slider-title {
+        font-size: 1.2rem;
+      }
+
+      .slider-value {
+        padding: 0.5rem 0;
+        font-size: 2rem;
+        line-height: 2rem;
+      }
     }
   }
 }

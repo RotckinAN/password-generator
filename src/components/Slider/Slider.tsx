@@ -24,18 +24,25 @@ const Slider = ({ value, setValue }: SliderProps) => {
         onChange={handleChange}
         min={1}
         max={20}
-        sx={{
+        sx={(theme) => ({
           "&.MuiSlider-root": {
             color: "#9ef8a6",
             borderRadius: 0,
 
             ".MuiSlider-thumb": {
-              height: 24,
-              width: 24,
-              backgroundColor: "#111016",
               border: "2px solid #9ef8a6",
+              backgroundColor: "#eae9ef",
+              [theme.breakpoints.down("sm")]: {
+                height: 20,
+                width: 20,
+              },
+              [theme.breakpoints.up("sm")]: {
+                height: 24,
+                width: 24,
+              },
 
               "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
+                backgroundColor: "#111016",
                 boxShadow: "inherit",
               },
 
@@ -44,7 +51,7 @@ const Slider = ({ value, setValue }: SliderProps) => {
               },
             },
           },
-        }}
+        })}
       />
     </div>
   );

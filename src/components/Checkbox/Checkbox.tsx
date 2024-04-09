@@ -8,7 +8,7 @@ const Checkbox = ({ label }: CheckboxProps) => {
   return (
     <FormControlLabel
       label={label}
-      sx={{
+      sx={(theme) => ({
         "&.MuiFormControlLabel-root": {
           margin: 0,
 
@@ -16,14 +16,21 @@ const Checkbox = ({ label }: CheckboxProps) => {
             fontFamily: "IBM Plex Mono",
             color: "#eae9ef",
             fontWeight: 500,
-            paddingLeft: "0.8rem",
+            [theme.breakpoints.down("sm")]: {
+              paddingLeft: "0.5rem",
+              fontSize: "0.85rem",
+            },
+            [theme.breakpoints.up("sm")]: {
+              paddingLeft: "0.8rem",
+              fontSize: "1rem",
+            },
           },
 
           ".MuiButtonBase-root": {
             padding: "2px",
           },
         },
-      }}
+      })}
       control={
         <MuiCheckbox
           sx={{

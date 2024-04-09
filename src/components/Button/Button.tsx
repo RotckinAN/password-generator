@@ -11,15 +11,20 @@ const Button = ({ children, onClick }: ButtonProps) => {
     <MuiButton
       onClick={onClick}
       variant="outlined"
-      sx={{
+      sx={(theme) => ({
         "&.MuiButtonBase-root": {
           padding: "1rem",
           borderRadius: 0,
           color: "#9ef8a6",
           borderColor: "#9ef8a6",
           fontFamily: "IBM Plex Mono",
-          fontSize: "1.2rem",
           fontWeight: 600,
+          [theme.breakpoints.down("sm")]: {
+            fontSize: "1rem",
+          },
+          [theme.breakpoints.up("sm")]: {
+            fontSize: "1.2rem",
+          },
 
           "&:hover": {
             backgroundColor: "#b1f9b7",
@@ -39,7 +44,7 @@ const Button = ({ children, onClick }: ButtonProps) => {
             paddingLeft: "1rem",
           },
         },
-      }}
+      })}
     >
       {children}
     </MuiButton>

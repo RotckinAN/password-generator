@@ -8,41 +8,39 @@
   justify-content: space-between;
   align-items: center;
   background-color: #111016;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem;
 
   p {
     margin: 0;
     color: #7f7d8a;
     font-weight: 500;
+    font-size: 0.85rem;
     text-transform: uppercase;
   }
 
   .strength-container {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.5rem;
 
     p {
       color: #eae9ef;
       font-weight: 600;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
 
     .strength-icon-container {
       display: flex;
-      gap: 0.4rem;
+      gap: 0.3rem;
 
       &.weak div:first-child {
         @include strength-color();
       }
 
-      &.medium div:first-child,
-      &.medium div:nth-child(2) {
+      &.medium :nth-child(-n + 2) {
         @include strength-color();
       }
 
-      &.strong div:first-child,
-      &.strong div:nth-child(2),
-      &.strong div:nth-child(3) {
+      &.strong div:nth-child(-n + 3) {
         @include strength-color();
       }
 
@@ -53,8 +51,32 @@
       div {
         box-sizing: border-box;
         border: 1px solid #eae9ef;
-        width: 0.65rem;
+        width: 0.5rem;
         height: 100%;
+      }
+    }
+  }
+
+  @media screen and (min-width: 540px) {
+    padding: 1.2rem 1.5rem;
+
+    p {
+      font-size: 1rem;
+    }
+
+    .strength-container {
+      gap: 0.8rem;
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      .strength-icon-container {
+        gap: 0.4rem;
+
+        div {
+          width: 0.65rem;
+        }
       }
     }
   }
