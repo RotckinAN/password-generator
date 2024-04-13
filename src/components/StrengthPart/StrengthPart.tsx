@@ -1,8 +1,9 @@
 import cn from "classnames";
 import "./StrengthPart.scss";
+import { StrengthKeys } from "@/src/types.ts";
 
 interface StrengthPartProps {
-  strength: "Weak" | "Medium" | "Strong" | "Very Strong";
+  strength: StrengthKeys;
 }
 
 const StrengthPart = ({ strength }: StrengthPartProps) => {

@@ -1,11 +1,39 @@
 import FileCopyOutlinedIcon from "@mui/icons-material/FileCopyOutlined";
-import "./Input.scss";
+import DoneIcon from "@mui/icons-material/Done";
 
-const Input = () => {
+import "./Input.scss";
+import { useState } from "react";
+
+interface InputProps {
+  inputValue: string;
+}
+
+const Input = ({ inputValue }: InputProps) => {
+  const [isCopied, setIsCopied] = useState(false);
+
+  if (isCopied) {
+    setTimeout(setIsCopied, 3 * 1000);
+  }
+
+  const handleButtonCopy = async () => {
+    if (inputValue) {
+      await navigator.clipboard.writeText(inputValue);
+      setIsCopied(true);
+    }
+  };
+
   return (
     <article className="input-result">
-      <p>PsdvHv&4f</p>
-      <FileCopyOutlinedIcon className="copy-icon" />
+      <p>{inputValue}</p>
+
+      {isCopied ? (
+        <DoneIcon className="copy-icon" />
+      ) : (
+        <FileCopyOutlinedIcon
+          className="copy-icon"
+          onClick={handleButtonCopy}
+        />
+      )}
     </article>
   );
 };

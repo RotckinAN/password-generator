@@ -5,9 +5,10 @@ import "./Slider.scss";
 interface SliderProps {
   value: number;
   setValue: Dispatch<SetStateAction<number>>;
+  minValue: number;
 }
 
-const Slider = ({ value, setValue }: SliderProps) => {
+const Slider = ({ value, setValue, minValue }: SliderProps) => {
   const handleChange = (evt: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
@@ -22,7 +23,7 @@ const Slider = ({ value, setValue }: SliderProps) => {
       <MuiSlider
         value={value}
         onChange={handleChange}
-        min={1}
+        min={minValue}
         max={20}
         sx={(theme) => ({
           "&.MuiSlider-root": {

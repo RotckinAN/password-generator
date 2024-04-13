@@ -1,10 +1,14 @@
 import { FormControlLabel, Checkbox as MuiCheckbox } from "@mui/material";
+import { ChangeEvent } from "react";
 
 interface CheckboxProps {
   label: string;
+  value: string;
+  onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
+  checked: boolean;
 }
 
-const Checkbox = ({ label }: CheckboxProps) => {
+const Checkbox = ({ label, value, onChange, checked }: CheckboxProps) => {
   return (
     <FormControlLabel
       label={label}
@@ -39,6 +43,9 @@ const Checkbox = ({ label }: CheckboxProps) => {
               color: "#b1f9b7",
             },
           }}
+          onChange={onChange}
+          value={value}
+          checked={checked}
         />
       }
     />
