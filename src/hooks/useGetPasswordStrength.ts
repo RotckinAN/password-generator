@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { PasswordStrength, StrengthKeys } from "@/src/types.ts";
+import { getActiveCheckboxesQuantity } from "@/src/utils/getActiveCheckboxesQuantity.ts";
 
 export const useGetPasswordStrength = ({
   passwordLength,
@@ -8,9 +9,7 @@ export const useGetPasswordStrength = ({
   const [strength, setStrength] = useState<StrengthKeys>("Weak");
 
   useEffect(() => {
-    const activeCheckboxes = Object.values(rules).filter(
-      (item) => !!item,
-    ).length;
+    const activeCheckboxes = getActiveCheckboxesQuantity(rules);
 
     if (
       (activeCheckboxes === 2 && passwordLength >= 10) ||

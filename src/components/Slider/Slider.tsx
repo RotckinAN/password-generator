@@ -1,5 +1,5 @@
 import { Slider as MuiSlider } from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import "./Slider.scss";
 
 interface SliderProps {
@@ -12,6 +12,12 @@ const Slider = ({ value, setValue, minValue }: SliderProps) => {
   const handleChange = (evt: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
+
+  useEffect(() => {
+    if (value < minValue) {
+      setValue(minValue as number);
+    }
+  }, [value, minValue, setValue]);
 
   return (
     <div className="slider">

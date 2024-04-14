@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PasswordStrength } from "@/src/types.ts";
+import { getActiveCheckboxesQuantity } from "@/src/utils/getActiveCheckboxesQuantity.ts";
 
 const shuffle = (array: string[]) => {
   let currentIndex = array.length,
@@ -24,7 +25,7 @@ export const usePasswordGenerate = () => {
   const lowerCase = "abcdefghijklmnopqrstuvwxyz";
   const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numbers = "123456789";
-  const symbols = "!#$%&()*+-./:;<=>?@";
+  const symbols = "!#$%&()*+-.'/:;<=>?@";
 
   const getIndex = (length: number): number => {
     return Math.floor(Math.random() * length);
@@ -43,37 +44,36 @@ export const usePasswordGenerate = () => {
       passwordLength,
     } = data;
 
-    const activeCheckboxes = Object.values(data.rules).filter(
-      (item) => !!item,
-    ).length;
+    const activeCheckboxes = getActiveCheckboxesQuantity(data.rules);
 
-    if (isLowercaseChecked) {
-      let count = 0;
+    isLowercaseChecked &&
+      passwordArray.push(lowerCase[getIndex(lowerCase.length)]);
 
-      while (count < passwordLength / activeCheckboxes) {
-        passwordArray.push(lowerCase[getIndex(lowerCase.length)]);
-        count++;
-      }
-    }
-    if (isUppercaseChecked) {
-      let count = 0;
-      while (count < passwordLength / activeCheckboxes) {
-        passwordArray.push(upperCase[getIndex(upperCase.length)]);
-        count++;
-      }
-    }
-    if (isNumbersChecked) {
-      let count = 0;
-      while (count < passwordLength / activeCheckboxes) {
-        passwordArray.push(numbers[getIndex(numbers.length)]);
-        count++;
-      }
-    }
-    if (isSymbolsChecked) {
-      let count = 0;
-      while (count < passwordLength / activeCheckboxes) {
-        passwordArray.push(symbols[getIndex(symbols.length)]);
-        count++;
+    isUppercaseChecked &&
+      passwordArray.push(upperCase[getIndex(upperCase.length)]);
+
+    isNumbersChecked && passwordArray.push(numbers[getIndex(numbers.length)]);
+
+    isSymbolsChecked && passwordArray.push(symbols[getIndex(symbols.length)]);
+
+    if (activeCheckboxes < passwordLength) {
+      while (passwordArray.length <= passwordLength) {
+        if (isLowercaseChecked) {
+          const random = Math.round(Math.random());
+          random && passwordArray.push(lowerCase[getIndex(lowerCase.length)]);
+        }
+        if (isUppercaseChecked) {
+          const random = Math.round(Math.random());
+          random && passwordArray.push(upperCase[getIndex(upperCase.length)]);
+        }
+        if (isNumbersChecked) {
+          const random = Math.round(Math.random());
+          random && passwordArray.push(numbers[getIndex(numbers.length)]);
+        }
+        if (isSymbolsChecked) {
+          const random = Math.round(Math.random());
+          random && passwordArray.push(symbols[getIndex(symbols.length)]);
+        }
       }
     }
 

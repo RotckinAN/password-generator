@@ -7,6 +7,7 @@ import StrengthPart from "@/components/StrengthPart";
 import Button from "@/components/Button";
 
 import { useGetPasswordStrength } from "@/src/hooks/useGetPasswordStrength.ts";
+import { getActiveCheckboxesQuantity } from "@/src/utils/getActiveCheckboxesQuantity.ts";
 import { CheckboxState, PasswordStrength } from "@/src/types.ts";
 import "./RulesField.scss";
 
@@ -60,9 +61,7 @@ const RulesField = ({ handlePasswordGenerate }: RulesFieldProps) => {
   };
 
   useEffect(() => {
-    const activeCheckboxes = Object.values(checkboxesValue).filter(
-      (item) => !!item,
-    ).length;
+    const activeCheckboxes = getActiveCheckboxesQuantity(checkboxesValue);
 
     activeCheckboxes
       ? setMinSliderValue(activeCheckboxes)

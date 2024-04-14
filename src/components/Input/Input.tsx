@@ -1,8 +1,9 @@
+import { useState } from "react";
+
 import FileCopyOutlinedIcon from "@mui/icons-material/FileCopyOutlined";
 import DoneIcon from "@mui/icons-material/Done";
 
 import "./Input.scss";
-import { useState } from "react";
 
 interface InputProps {
   inputValue: string;
