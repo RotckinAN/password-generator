@@ -1,11 +1,25 @@
 import FileCopyOutlinedIcon from "@mui/icons-material/FileCopyOutlined";
 import "./Input.scss";
 
-const Input = () => {
+interface InputProps {
+  inputText: string;
+}
+
+const Input = ({ inputText }: InputProps) => {
+  const handleCopyPassword = () => {
+    if (inputText) {
+      navigator.clipboard.writeText(inputText);
+    }
+    alert("Copied to clipboard!");
+  };
+
   return (
     <article className="input-result">
-      <p>PsdvHv&4f</p>
-      <FileCopyOutlinedIcon className="copy-icon" />
+      <p>{inputText}</p>
+      <FileCopyOutlinedIcon
+        onClick={handleCopyPassword}
+        className="copy-icon"
+      />
     </article>
   );
 };

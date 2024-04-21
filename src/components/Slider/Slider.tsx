@@ -3,25 +3,28 @@ import { Dispatch, SetStateAction } from "react";
 import "./Slider.scss";
 
 interface SliderProps {
-  value: number;
-  setValue: Dispatch<SetStateAction<number>>;
+  passwordLength: number;
+  setPasswordLength: Dispatch<SetStateAction<number>>;
 }
 
-const Slider = ({ value, setValue }: SliderProps) => {
-  const handleChange = (evt: Event, newValue: number | number[]) => {
-    setValue(newValue as number);
+const Slider = ({ passwordLength, setPasswordLength }: SliderProps) => {
+  const handlePasswordLengthChange = (
+    evt: Event,
+    newValue: number | number[],
+  ) => {
+    setPasswordLength(newValue as number);
   };
 
   return (
     <div className="slider">
       <div className="title-container">
         <h3 className="slider-title">Character Length</h3>
-        <h3 className="slider-value">{value}</h3>
+        <h3 className="slider-value">{passwordLength}</h3>
       </div>
 
       <MuiSlider
-        value={value}
-        onChange={handleChange}
+        value={passwordLength}
+        onChange={handlePasswordLengthChange}
         min={1}
         max={20}
         sx={(theme) => ({

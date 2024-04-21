@@ -2,11 +2,19 @@ import { FormControlLabel, Checkbox as MuiCheckbox } from "@mui/material";
 
 interface CheckboxProps {
   label: string;
+  includeLetNum: boolean;
+  setIncludeLetNum:(include:boolean) => void;
 }
 
-const Checkbox = ({ label }: CheckboxProps) => {
+const Checkbox = ({ label, includeLetNum, setIncludeLetNum }: CheckboxProps) => {
+
+  const handleIncludeLetNumChange = () => {
+    setIncludeLetNum(!includeLetNum);
+  }
   return (
     <FormControlLabel
+      checked={includeLetNum}
+      onChange={handleIncludeLetNumChange}
       label={label}
       sx={(theme) => ({
         "&.MuiFormControlLabel-root": {

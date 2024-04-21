@@ -1,32 +1,38 @@
-import cn from "classnames";
+import { getStrengthDescription } from "@/src/utils/getStrengthDescription.ts";
 import "./StrengthPart.scss";
 
+import { getStrengthColor } from "@/src/utils/getStrengthColor";
+
 interface StrengthPartProps {
-  strength: "Weak" | "Medium" | "Strong" | "Very Strong";
+  strength: number;
 }
 
 const StrengthPart = ({ strength }: StrengthPartProps) => {
+  const values = [1, 2, 3, 4];
   return (
     <article className="strength-part">
       <p>strength</p>
       <div className="strength-container">
-        <p>{strength}</p>
-        <div
-          className={cn("strength-icon-container", {
-            weak: strength === "Weak",
-            medium: strength === "Medium",
-            strong: strength === "Strong",
-            veryStrong: strength === "Very Strong",
-          })}
-        >
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
+        {getStrengthDescription(Math.floor(strength)) && (
+          <p>{getStrengthDescription(Math.floor(strength))}</p>
+        )}
+
+        {values.map((value) => (
+          <div
+            key={value}
+            className={`strength-icon-container ${getStrengthColor(strength, value)}`}
+          >
+            <div />
+          </div>
+        ))}
+        {/*<div />*/}
+        {/*<div />*/}
+        {/*<div />*/}
       </div>
     </article>
   );
 };
 
 export default StrengthPart;
+
+
