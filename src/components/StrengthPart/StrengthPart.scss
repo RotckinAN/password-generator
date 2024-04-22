@@ -1,6 +1,6 @@
-@mixin strength-color() {
-  border-color: #f7cd69;
-  background-color: #f7cd69;
+@mixin strength-color($color) {
+  border-color: $color;
+  background-color: $color;
 }
 
 .strength-part {
@@ -23,30 +23,45 @@
     gap: 0.5rem;
 
     p {
-      color: #eae9ef;
       font-weight: 600;
       font-size: 1.2rem;
+    }
+
+    &.weak p {
+      color: red;
+    }
+
+    &.medium p {
+      color: #f7cd69;
+    }
+
+    &.strong p {
+      color: orange;
+    }
+
+    &.very-strong p {
+      color: green;
+    }
+
+    &.weak .strength-icon-container div:first-child {
+      @include strength-color(red);
+    }
+
+    &.medium .strength-icon-container div:nth-child(-n + 2) {
+      @include strength-color(#f7cd69);
+    }
+
+    &.strong .strength-icon-container div:nth-child(-n + 3) {
+      @include strength-color(orange);
+    }
+
+    &.very-strong .strength-icon-container div {
+      @include strength-color(green);
     }
 
     .strength-icon-container {
       display: flex;
       gap: 0.3rem;
-
-      &.weak div:first-child {
-        @include strength-color();
-      }
-
-      &.medium :nth-child(-n + 2) {
-        @include strength-color();
-      }
-
-      &.strong div:nth-child(-n + 3) {
-        @include strength-color();
-      }
-
-      &.veryStrong div {
-        @include strength-color();
-      }
 
       div {
         box-sizing: border-box;

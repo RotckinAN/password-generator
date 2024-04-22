@@ -17,16 +17,23 @@ export const useGetPasswordStrength = ({
       (activeCheckboxes === 4 && passwordLength < 10)
     ) {
       setStrength("Medium");
-    } else if (
+      return;
+    }
+
+    if (
       (activeCheckboxes === 3 && passwordLength >= 10) ||
       (activeCheckboxes === 4 && passwordLength >= 10 && passwordLength < 15)
     ) {
       setStrength("Strong");
-    } else if (activeCheckboxes === 4 && passwordLength >= 15) {
-      setStrength("Very Strong");
-    } else {
-      setStrength("Weak");
+      return;
     }
+
+    if (activeCheckboxes === 4 && passwordLength >= 15) {
+      setStrength("Very Strong");
+      return;
+    }
+
+    setStrength("Weak");
   }, [passwordLength, rules]);
 
   return { strength };

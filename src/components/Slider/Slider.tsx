@@ -10,7 +10,7 @@ interface SliderProps {
 
 const Slider = ({ value, setValue, minValue }: SliderProps) => {
   const handleChange = (evt: Event, newValue: number | number[]) => {
-    setValue(newValue as number);
+    evt && setValue(newValue as number);
   };
 
   useEffect(() => {

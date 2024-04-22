@@ -1,6 +1,6 @@
 import cn from "classnames";
-import "./StrengthPart.scss";
 import { StrengthKeys } from "@/src/types.ts";
+import "./StrengthPart.scss";
 
 interface StrengthPartProps {
   strength: StrengthKeys;
@@ -10,16 +10,16 @@ const StrengthPart = ({ strength }: StrengthPartProps) => {
   return (
     <article className="strength-part">
       <p>strength</p>
-      <div className="strength-container">
+      <div
+        className={cn("strength-container", {
+          weak: strength === "Weak",
+          medium: strength === "Medium",
+          strong: strength === "Strong",
+          "very-strong": strength === "Very Strong",
+        })}
+      >
         <p>{strength}</p>
-        <div
-          className={cn("strength-icon-container", {
-            weak: strength === "Weak",
-            medium: strength === "Medium",
-            strong: strength === "Strong",
-            veryStrong: strength === "Very Strong",
-          })}
-        >
+        <div className="strength-icon-container">
           <div />
           <div />
           <div />
