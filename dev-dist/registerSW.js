@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/password-generator/dev-sw.js?dev-sw', { scope: '/password-generator/', type: 'classic' })
